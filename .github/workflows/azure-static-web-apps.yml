@@ -1,2 +1,2 @@
 app_location: .
-output_location: build
+output_location: dist
