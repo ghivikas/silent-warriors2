@@ -1,0 +1,379 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Site header: consistent across all pages */
+.site-header {
+  position: fixed;
+  top: 34px; /* topbar height + border */
+  left: 0;
+  width: 100vw;
+  z-index: 1099;
+  background: #d9cdb8;
+  box-sizing: border-box;
+  border-bottom: 0;
+}
+
+.site-header .header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 14px 20px; /* consistent height */
+  gap: 20px;
+}
+
+/* logo */
+.site-logo {
+  height: 100px; /* Increase height as desired */
+  width: auto;   /* Maintain aspect ratio */
+  display: block;
+}
+
+/* nav center */
+.main-nav {
+  flex: 1;
+}
+.main-nav ul {
+  display:flex;
+  justify-content:center;
+  gap: 28px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.main-nav a, .main-nav .nav-link {
+  color: #1f1f1f;
+  text-decoration:none;
+  font-weight:600;
+  letter-spacing: 0.6px;
+}
+
+/* donate button */
+.donate-btn {
+  background: #1139a7;
+  color:#fff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration:none;
+  font-weight:700;
+}
+
+/* underline under header */
+.header-underline {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 6px;
+  background: #1139a7;
+;
+  z-index: 1101;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/* hero */
+.hero-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 70vh;
+  margin: 0 auto;
+}
+
+.hero-image {
+  width: 100%;
+  height: 480px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* stats row that overlaps the bottom of hero */
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 100vw;
+  height: 60px;
+  margin: 0;
+  position: fixed;
+  left: 0;
+  bottom: 32px;              /* Reduce gap between stats and footer */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  background: #cdbfae;
+  border-radius: 0;
+  z-index: 998;              /* Just below the footer */
+}
+.stat-card {
+  flex: 1 1 0;
+  background: transparent;
+  height: 100%;
+  padding: 6px 10px;
+  text-align: center;
+  border-right: 1px solid rgba(0,0,0,0.08);
+  min-width: 100px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 100%;            /* Fixed font size to 100% */
+}
+.stat-card:last-child {
+  border-right: none;
+}
+.stat-value {
+  font-size: 100%;   /* Set stat value font size to 50% */
+  font-weight: 700; /* Make stat value bold */
+  color: #1f1f1f;
+}
+.stat-label {
+  font-size: 14px;
+  color: rgba(0,0,0,0.7);
+  margin-top: 8px;
+}
+
+/* ensure page spacing below overlapping stats */
+main {
+  padding-top: 120px; /* topbar + header height */
+  padding-bottom: 120px;
+  min-height: calc(100vh - 240px); /* ensures content fills screen */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center horizontally */
+  justify-content: flex-start; /* start at top, but you can use center if you want vertical centering */
+  box-sizing: border-box;
+}
+
+/* Utility class for centering content in any component */
+.content-center {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-image { height: 360px; }
+  .hero-stats { transform: translate(-50%, 30%); width: calc(100% - 40px); }
+  .stat-value { font-size: 20px; }
+  .stat-card { padding: 18px; }
+  .main-nav ul { gap: 14px; }
+  .site-logo { height: 48px; }
+}
+
+@media (max-width: 520px) {
+  .hero-image { height: 260px; }
+  .hero-stats { display:block; position: static; transform:none; margin: 0 12px; bottom: auto; }
+  .stat-card { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .stat-card:last-child { border-bottom: none; }
+  .main-nav ul { display:none; } /* hide nav on small screens - add mobile nav later if needed */
+}
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1100;
+  
+  background: #1139a7;
+  
+  border-bottom: 2px solid #d9cdb8; /* light border to separate */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04); /* subtle shadow */
+  height: 32px; /* ensure consistent height */
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+}
+
+.topbar-left .social-icon {
+  color: white; /* Example: bright yellow, change to any color you want */
+  margin-right: 10px;
+  text-decoration: none;
+  opacity: 1;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.topbar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-right: 24px; /* Add right padding to keep icon inside site display */
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-list {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%; /* aligns dropdown directly below parent */
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  padding: 0;
+  border-radius: 2px;
+  min-width: 180px; /* Increase if needed for longer text */
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.dropdown-list li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 0.5px solid #eee; /* Reduce border thickness for smaller gap */
+}
+
+.dropdown-list li:last-child {
+  border-bottom: none;
+}
+
+.dropdown-list li a {
+  display: block;
+  padding: 6px 18px; /* Reduce vertical padding for smaller gap */
+  color: #1139a7;
+  text-decoration: none;
+  font-size: 0.95rem;
+  text-align: left;
+  background: none;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.dropdown-list li a:hover {
+  background: #d9cdb8;
+}
+
+/* For SERVICES dropdown vertical list with equal spacing */
+.services-dropdown {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  border-radius: 4px;
+  min-width: 180px;
+  z-index: 2001;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.services-dropdown li {
+  border-bottom: none; /* Remove border between items */
+  margin: 0;
+  padding: 0;
+}
+
+.services-dropdown a {
+  display: block;
+  padding: 0 18px;
+  color: #1139a7;
+  text-decoration: none;
+  font-size: 0.95rem;
+  text-align: left;
+  background: none;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.services-dropdown a:hover {
+  background: #d9cdb8;
+}
+
+/* Footer */
+.footer {
+  background: #1139a7;
+  color: #fff;
+  text-align: center;
+  padding: 6px 0; /* reduced from 16px to 6px */
+  font-size: 15px;
+  width: 100vw;        /* Full site width */
+  min-width: 220px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  z-index: 999;
+  overflow-x: auto;
+  border-top: 2px solid #d9cdb8;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+}
+
+.profile-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 36px; /* below the icon */
+  right: 0;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  border-radius: 4px;
+  min-width: 120px;
+  z-index: 2001;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.profile-dropdown li {
+  border-bottom: 1px solid #eee;
+}
+
+.profile-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.profile-dropdown a {
+  display: block;
+  padding: 10px 18px;
+  color: #1139a7;
+  text-decoration: none;
+  font-size: 0.95rem;
+  text-align: left;
+  background: none;
+}
+
+.profile-dropdown a:hover {
+  background: #d9cdb8;
+}
+
+.main-nav .profile-dropdown {
+  left: 0;
+  right: auto;
+  top: 36px;
+}
